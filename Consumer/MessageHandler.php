@@ -13,11 +13,10 @@ class MessageHandler {
         try {
             $cleanXml = preg_replace('/(<\/?|\s)(\w+:)/', '$1', $msg->body);
             $xml = new SimpleXMLElement($cleanXml);
-            // Получение имени корневого элемента
+            // get root name
             $messageType = $xml->getName();
 
             Log::log($messageType, 'handler.log');
-            //Log::log($msg->body, 'message_body.log'); //временно сохраняем всё тело сообщений для теста
 
             $hanle = self::createHandle($messageType);
             $hanle->handle($xml);
@@ -26,16 +25,16 @@ class MessageHandler {
         } catch (\Exception $e) {
             Log::log("Failed to handle XML: " . $e->getMessage() , 'rabbit_error.log');
             Log::log($msg->body , 'rabbit_error.log');
-        } finally { //Выполняется в любом случае, даже есть есть ошибка
-            $msg->ack(); //помечает сообщение как прочитанное
+        } finally {
+            $msg->ack(); //mark message as read
         }
 
 
     }
 
     /**
-     * Фабрика классов обработки xml документов
-     * Нужно создать класс с именем метода и реализующего MessageHandlerInterface и он автоматически подключится для обработки xml из шины
+     * Factory for XML document handlers.
+     * Create a class named after the method implementing MessageHandlerInterface, and it'll auto-handle XML from the bus.
      * @param string $messageType
      * @return MessageHandlerInterface
      */

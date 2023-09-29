@@ -11,7 +11,7 @@ class RabbitMQConnection implements ConnectionInterface
     private $connection;
 
     /**
-     * Устанавливает соединение с RabbitMQ.
+     * connection to RabbitMQ.
      * @throws \Exception
      */
     private function __construct()
