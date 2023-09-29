@@ -33,7 +33,7 @@ class MessageHandler {
     }
 
     /**
-     * Factory for XML document handlers.
+     * Factory Method for XML document handlers.
      * Create a class named after the method implementing MessageHandlerInterface, and it'll auto-handle XML from the bus.
      * @param string $messageType
      * @return MessageHandlerInterface
