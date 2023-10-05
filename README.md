@@ -1,0 +1,2 @@
+Welcome to the ExampleRabbitMQ repository. 
+This project showcases my experience with RabbitMQ for asynchronous message processing and my understanding of Object-Oriented Programming through the design of interfaces and modular message handlers. The organized code structure reflects a systematic approach, and the use of dependency injection highlights familiarity with modern design patterns. Feel free to explore and reach out with any questions.
